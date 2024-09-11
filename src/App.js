@@ -1,4 +1,5 @@
 import './App.css';
+import DrumMachine from './DrumMachine';
 import buttonsData from "./buttons.json";
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
 
   return (
     <div className="wrapper">
-
+      <DrumMachine drumPads={buttonsData.buttons} />
     </div>
   );
 }
