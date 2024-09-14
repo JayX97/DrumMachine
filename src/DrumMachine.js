@@ -1,9 +1,15 @@
+import { useState } from 'react';
+
 const DrumMachine = (props) => {
     const drumPads = props.drumPads;
-    const displayText = "test";
+    const [displayText, setDisplayText] = useState("test");
 
     const playAudio = (audio) => {// function for drum pad onClick attribute
         document.getElementById(audio).play();
+    }
+
+    const changeDisplayText = (text) => {//function to change text in display element
+        setDisplayText(text);
     }
 
     return (
@@ -12,7 +18,10 @@ const DrumMachine = (props) => {
             {
                 drumPads.map(key => {
                     return (
-                        <button onClick={() => playAudio(key.letter)} className="drum-pad" id={key.name}>
+                        <button onClick={() => {
+                            playAudio(key.letter);
+                            changeDisplayText(key.name)
+                        }} className="drum-pad" id={key.name}>
                             <audio src={key.link} className="clip" id={key.letter} />
                             {key.letter}
                         </button>
