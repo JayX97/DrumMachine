@@ -3,7 +3,7 @@ import DrumMachine from './DrumMachine';
 import buttonsData from "./buttons.json";
 
 function App() {
-  buttonsData.buttons.forEach(key => console.log(key.key));
+  buttonsData.buttons.forEach(key => console.log(key.letter));
 
   return (
     <div className="wrapper">
