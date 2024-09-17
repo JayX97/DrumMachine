@@ -14,23 +14,12 @@ const DrumMachine = (props) => {
     const changeDisplayText = (text) => {//function to change text in display element
         setDisplayText(text);
     };
-
+    
+    //Functions for controls
     const handleKeyInput = (event) => {// callback function for key listener
-        switch(event.key) {
-            case "q":
-            case "w":
-            case "e":
-            case "a":
-            case "s":
-            case "d":
-            case "z":
-            case "x":
-            case "c":
-                document.getElementById(event.key.toUpperCase()).click();
-                break;
-            default:
-                break;
-        }
+        document.querySelectorAll("audio").forEach(clip => {
+            if (clip.id === event.key.toUpperCase()) document.getElementById(event.key.toUpperCase()).click();
+        });
     };
 
     const changeVolume = (event) => {
