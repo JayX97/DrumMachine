@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 const DrumMachine = (props) => {
     const drumPads = props.drumPads;
     const [displayText, setDisplayText] = useState("test");
+    const [volume, setVolume] = useState("0.3"); //text for display
 
     const playAudio = (audio) => {// function for drum pad onClick attribute
         document.getElementById(audio).pause();
@@ -14,7 +15,7 @@ const DrumMachine = (props) => {
         setDisplayText(text);
     };
 
-    const handleKeyInput = (event) => {
+    const handleKeyInput = (event) => {// callback function for key listener
         switch(event.key) {
             case "q":
             case "w":
@@ -31,7 +32,13 @@ const DrumMachine = (props) => {
                 break;
         }
     };
+
+    const changeVolume = (event) => {
+        setVolume(event.target.value);
+        document.querySelectorAll("audio").forEach(clip => clip.volume = event.target.value); //set volume for all audio elements while playing/paused
+    };
     
+    //Key listener
     useEffect(() => {
         document.addEventListener("keydown", handleKeyInput);
 
@@ -42,9 +49,15 @@ const DrumMachine = (props) => {
 
     return (
         <div id="drum-machine">
-            <div id="display">{displayText}</div>
+            <div id="machine-interface">
+                <div id="display">{displayText}</div>
+                <div id="volume-slider">
+                    <input type="range" id="volume" onChange={changeVolume} value={volume} min="0" max="1" step="0.01" />
+                    <p>{Math.floor(volume * 100)}</p>
+                </div>
+            </div>
             <div id="pad-grid">
-            {
+            { //render each button inside buttons array in object
                 drumPads.map(key => {
                     return (
                         <button onClick={() => {
@@ -55,7 +68,7 @@ const DrumMachine = (props) => {
                             {key.letter}
                         </button>
                     )
-                }) //render each button inside buttons array in object
+                })
             }
             </div>
         </div>
