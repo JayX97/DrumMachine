@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#switch {
+  width: 65px;
+  height: 35px;
+  background-color: black;
+  align-items: center;
+}
+
+#toggle {
+  width: 25px;
+  height: 25px;
+  margin: 5px;
+  background-color: green;
+}
