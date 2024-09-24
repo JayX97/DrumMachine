@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 
 const DrumMachine = (props) => {
     const drumPads = props.drumPads;
-    const [displayText, setDisplayText] = useState("test");
+    const [displayText, setDisplayText] = useState("");
     const [volume, setVolume] = useState("0.3"); //text for display
     const [power, setPower] = useState(true);
     const [style, setStyle] = useState({ float: "left" });
 
     const toggleSwitch = () => {
         setPower(!power);
-        changeDisplayText("test"); 
+        changeDisplayText(""); 
         if (style.float === "left") setStyle({ float: "right" });
         else setStyle({ float: "left" });
     };
@@ -20,8 +20,12 @@ const DrumMachine = (props) => {
         document.getElementById(audio).play();
     };
 
-    const changeDisplayText = (text) => {//function to change text in display element
+    const changeDisplayText = (text) => {// function to change text in display element
         setDisplayText(text);
+    };
+
+    const resetDisplayText = () => {
+        setDisplayText("");
     };
     
     //Functions for controls
@@ -34,6 +38,10 @@ const DrumMachine = (props) => {
     const changeVolume = (event) => {
         setVolume(event.target.value);
         document.querySelectorAll("audio").forEach(clip => clip.volume = event.target.value); //set volume for all audio elements while playing/paused
+        if (power) {
+            changeDisplayText("Volume: " + Math.floor(event.target.value * 100));
+            setTimeout(resetDisplayText, 1500);
+        };
     };
     
     //Key listener
@@ -50,12 +58,11 @@ const DrumMachine = (props) => {
             <div id="machine-interface">
                 <div id="display">{displayText}</div>
                 <div id="power-switch">
-                    <p>Power</p>
+                    <p>POWER</p>
                     <div id="switch" onClick={toggleSwitch}><div id="toggle" style={style} /></div>
                 </div>
                 <div id="volume-slider">
                     <input type="range" id="volume" onChange={changeVolume} value={volume} min="0" max="1" step="0.01" />
-                    <p>{Math.floor(volume * 100)}</p>
                 </div>
             </div>
             <div id="pad-grid">
