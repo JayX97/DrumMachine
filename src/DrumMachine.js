@@ -9,7 +9,7 @@ const DrumMachine = (props) => {
 
     const toggleSwitch = () => {
         setPower(!power);
-        changeDisplayText(""); 
+        changeDisplayText("");
         if (style.float === "left") setStyle({ float: "right" });
         else setStyle({ float: "left" });
     };
@@ -31,7 +31,11 @@ const DrumMachine = (props) => {
     //Functions for controls
     const handleKeyInput = (event) => {// callback function for key listener
         document.querySelectorAll("audio").forEach(clip => {
-            if (clip.id === event.key.toUpperCase()) document.getElementById(event.key.toUpperCase()).click();
+            if (clip.id === event.key.toUpperCase()) {
+                document.getElementById(event.key.toUpperCase()).click();
+                document.getElementById(event.key.toUpperCase()).style.transform = "scale(0.90)";
+                document.getElementById(event.key.toUpperCase()).style.backgroundColor = "red";
+            };
         });
     };
 

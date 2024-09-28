@@ -18,6 +18,7 @@ code {
 }
 
 .wrapper {
+  background-image: linear-gradient(180deg, #4900ff, #9600ff, #ff00c1);
   display: flex;
   width: 100vw;
   height: 100vh;
@@ -27,10 +28,12 @@ code {
 }
 
 #drum-machine {
+  background-image: linear-gradient(180deg, #ffd156, #ffba81, #ffa3ac);
   display: flex;
   width: 700px;
   height: 400px;
   border: 5px solid black;
+  border-image: linear-gradient(45deg, #ff71ce, #b967ff, #01cdfe, #05ffa1, #fffb96) 1;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
@@ -39,7 +42,9 @@ code {
 #switch {
   width: 65px;
   height: 35px;
-  background-color: black;
+  background-color: #4900ff;
+  border: 2px solid black;
+  border-image: linear-gradient(45deg, #ff71ce, #b967ff, #01cdfe, #05ffa1, #fffb96) 1;
   align-items: center;
 }
 
@@ -47,7 +52,7 @@ code {
   width: 25px;
   height: 25px;
   margin: 5px;
-  background-color: green;
+  background-color: #05ffa1;
 }
 
 #machine-interface {
@@ -65,6 +70,7 @@ code {
   line-height: 50px;
   height: 50px;
   border: 4px inset gray;
+  border-image: linear-gradient(45deg, #ff71ce, #b967ff, #01cdfe, #05ffa1, #fffb96) 1;
 }
 
 #power-switch {
@@ -83,6 +89,34 @@ code {
 }
 
 #pad-grid > .drum-pad {
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #00b8ff;
   width: 30%;
   height: 30%;
+  border-style: none;
+  border-radius: 10%;
+  box-shadow: 0px 15px 16px -3px rgba(46,74,117,0.4);
+}
+
+#pad-grid > .drum-pad:hover {
+  cursor: pointer;
+}
+
+#pad-grid > .drum-pad:active {
+  transform: scale(0.90);
+  background-color: #9600ff;
+}
+
+.footer {
+  color: white;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 25px;
+}
+
+#author-link {
+  text-decoration: none;
+  color: inherit;
 }
