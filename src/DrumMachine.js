@@ -15,9 +15,10 @@ const DrumMachine = (props) => {
     };
 
     const playAudio = (audio) => {// function for drum pad onClick attribute
-        document.getElementById(audio).pause();
-        document.getElementById(audio).currentTime = 0;
-        document.getElementById(audio).play();
+        const sound = document.getElementById(audio);
+        sound.pause();
+        sound.currentTime = 0;
+        sound.play();
     };
 
     const changeDisplayText = (text) => {// function to change text in display element
@@ -32,9 +33,13 @@ const DrumMachine = (props) => {
     const handleKeyInput = (event) => {// callback function for key listener
         document.querySelectorAll("audio").forEach(clip => {
             if (clip.id === event.key.toUpperCase()) {
-                document.getElementById(event.key.toUpperCase()).click();
-                document.getElementById(event.key.toUpperCase()).style.transform = "scale(0.90)";
-                document.getElementById(event.key.toUpperCase()).style.backgroundColor = "red";
+                const clipPad = document.getElementById(event.key.toUpperCase()).parentNode; //parentNode is the button element wrapping the audio element
+                clipPad.click();
+                // emulate pressing using CSS class styling
+                clipPad.classList.add("active");
+                setTimeout(() => {
+                    clipPad.classList.remove("active");
+                }, 100);
             };
         });
     };

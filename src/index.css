@@ -80,6 +80,37 @@ code {
   justify-content: space-around;
 }
 
+#volume-slider input {
+  -webkit-appearance: none;
+  height: 10px;
+  background-color: #9600ff;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+#volume-slider input[type="range"]::-moz-range-thumb {
+  -moz-appearance: none;
+  border: 7px solid #05ffa1;
+  background-color: #05ffa1;
+  border-radius: 0;
+  height: 1em;
+  width: 1px;
+}
+
+#volume-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 7px solid #05ffa1;
+  background-color: #05ffa1;
+  border-radius: 0;
+  height: 2em;
+  width: 1px;
+}
+
+button {
+  font-family: inherit;
+}
+
 #pad-grid {
   display: flex;
   width: 290px;
@@ -103,7 +134,8 @@ code {
   cursor: pointer;
 }
 
-#pad-grid > .drum-pad:active {
+#pad-grid > .drum-pad:active,
+#pad-grid > .drum-pad.active {
   transform: scale(0.90);
   background-color: #9600ff;
 }
